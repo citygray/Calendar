@@ -14,25 +14,13 @@ public class Calendar {
 		
 		//숫자를 입력받아 해당하는 달의 최대 일수를 출력하는 프로그램
 		System.out.println("월을 입력하시요");
-		int month,maxDay;
 		
 		Scanner scanner = new Scanner(System.in);
-		month = scanner.nextInt();
+		int month = scanner.nextInt();
 		scanner.close();
+		int[] maxDays = {31,28,31,30,31,30,31,31,30,31,30,31};
 		
-		switch (month) {
-		case 2:
-			maxDay = 28;
-			break;
-		case 4:case 6:case 9:case 11:
-			maxDay = 30;
-			break;
-		default:
-			maxDay = 31;
-			break;
-		}
-		
-		System.out.printf("%d달의 최대일수는 %d입니다",month,maxDay);
+		System.out.printf("%d달의 최대일수는 %d입니다",month,maxDays[month-1]);
 		
 	}
 
