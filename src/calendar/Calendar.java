@@ -1,49 +1,30 @@
 package calendar;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-
 
 public class Calendar {
 	private final int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	private final int[] LEAP_MAX_DAYS = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	
-	private HashMap<Date, String> planMap;
-	
+
+	private HashMap<Date, PlanItem> planMap;
+
 	public Calendar() {
-		 planMap = new HashMap<Date, String>();
+		planMap = new HashMap<Date, PlanItem>();
 	}
-	
+
 	/**
 	 * 
 	 * @param date ex:"2017-06-20"
 	 * @param plan
-	 * @throws ParseException
 	 */
 	public void registerPlan(String sDate, String plan) {
-		 // 문자열 -> Date
-		
-		try {
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
-            planMap.put(date,plan);		
-            
-        } catch(ParseException e) {
-            e.printStackTrace();
-        }
-    }
-		
-	public String searchPlan(String sDate) {
-		try {
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
-            String plan = planMap.get(date);		
-            return plan;
-            
-        } catch(ParseException e) {
-            e.printStackTrace();
-            return "";
-        }
+		PlanItem p = new PlanItem(sDate, plan);
+		planMap.put(p.getDate(), p);
+	}
+
+	public PlanItem searchPlan(String sDate) {
+		return planMap.get(PlanItem.getDateformString(sDate));
 	}
 
 	public boolean isLeapYear(int year) {
