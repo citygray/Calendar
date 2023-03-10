@@ -16,10 +16,6 @@ public class Prompt {
 
 	}
 
-	/**
-	 * 1. Switch case - String 2. PlanItem class 적용
-	 */
-
 	public void runPrompt() {
 		Scanner scanner = new Scanner(System.in);
 		Calendar calendar = new Calendar();
@@ -107,11 +103,6 @@ public class Prompt {
 		// 셀 실행
 		Prompt p = new Prompt();
 		p.runPrompt();
-
-		// test
-//		Calendar cal = new Calendar();
-//		cal.registerPlan("2023-03-12","일정등록 테스트");
-//		System.out.println(cal.searchPlan("2023-03-12").equals("일정등록 테스트"));
 	}
 
 }
